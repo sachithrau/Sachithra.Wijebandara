@@ -1,0 +1,53 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BSS-API",
+    "description": "Client BSS API",
+    "version": "1.0.0"
+  },
+  "host": "api.client.tst",
+  "basePath": "/",
+  "schemes": ["https"],
+  "consumes": ["application/json", "application/javascript"],
+  "produces": ["application/json", "application/javascript"],
+  "paths": {
+    "/availability/username_password_pair/{username}/{password}": {
+      "get": {
+        "summary": "Returns username password pair availability information",
+        "responses": {
+          "200": {
+            "description": "Availability information"
+          },
+          "default": {
+            "description": "an \"unexpected\" error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/securityDefinitions/api_key"
+        },
+        {
+          "name": "username",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {},
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "HTTP-apikey",
+      "in": "header"
+    }
+  }
+}
